@@ -5,13 +5,11 @@ import Contact from './Contact'
 
 
 const Title = ({children}) => (
-    <div>
-        <small>{children}</small>
-    </div>
+    <small>{children}</small>
 );
 
 const SubTitle = ({children}) => (
-    <p>
+    <p className="subtitle">
         &ldquo;{children}&rdquo;
     </p>
 );
