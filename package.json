@@ -4,9 +4,9 @@
     "main": "index.js",
     "license": "MIT",
     "scripts": {
-        "start": "yarn run build && babel-node --presets es2015,react index.js",
+        "start": "npm run build && babel-node --presets es2015,react index.js",
         "dev": "nodemon --exec \"babel-node --presets es2015,react index.js\" --watch index.js",
-        "build": "yarn run lessc && yarn run bundle",
+        "build": "npm run lessc && npm run bundle",
         "lessc": "lessc --clean-css src/index.less dist/bundle.css",
         "bundle": "browserify src/index.js -o dist/bundle.js -v",
         "watchify": "watchify src/index.js -o dist/bundle.js -v"
@@ -35,8 +35,7 @@
         "redux-actions": "^2.0.1",
         "redux-logger": "^3.0.0",
         "redux-thunk": "^2.2.0",
-        "watchify": "^3.9.0",
-        "yarn": "^0.24.5"
+        "watchify": "^3.9.0"
     },
     "browserify": {
         "transform": [
