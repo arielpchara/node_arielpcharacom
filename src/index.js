@@ -14,9 +14,13 @@ import { ConnectedRouter, routerReducer, routerMiddleware, push } from 'react-ro
 import HelloCenter from './components/HelloCenter';
 import reducers from './reducers';
 
+const preloadedState = window.__PRELOADED_STATE__
+delete window.__PRELOADED_STATE__
+
 const history = createHistory();
 const store = createStore(
     reducers, 
+    preloadedState,
     applyMiddleware(
         routerMiddleware(history), 
         thunkMiddleware

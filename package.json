@@ -5,7 +5,7 @@
     "license": "MIT",
     "scripts": {
         "start": "yarn run build && babel-node --presets es2015 index.js",
-        "dev": "nodemon --exec \"babel-node --presets es2015 index.js\" --watch index.js",
+        "dev": "nodemon --exec \"babel-node --presets es2015,react index.js\" --watch index.js",
         "build": "yarn run lessc && yarn run bundle",
         "lessc": "lessc --clean-css src/index.less dist/bundle.css",
         "bundle": "browserify src/index.js -o dist/bundle.js -v",
