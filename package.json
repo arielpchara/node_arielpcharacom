@@ -6,8 +6,8 @@
     "scripts": {
         "start": "npm run build && babel-node --presets es2015,react index.js",
         "dev": "nodemon --exec \"babel-node --presets es2015,react index.js\" --watch index.js",
-        "build": "npm run lessc && npm run bundle",
-        "lessc": "lessc --clean-css src/index.less dist/bundle.css",
+        "build": "npm run sass && npm run bundle",
+        "sass": "node-sass  --output-style=compressed src/index.scss dist/bundle.css",
         "bundle": "browserify src/index.js -o dist/bundle.js -v",
         "watchify": "watchify src/index.js -o dist/bundle.js -v"
     },
@@ -24,8 +24,7 @@
         "dotenv": "^4.0.0",
         "express": "^4.15.2",
         "isomorphic-fetch": "^2.2.1",
-        "less": "^2.7.2",
-        "less-plugin-clean-css": "^1.5.1",
+        "node-sass": "^4.5.3",
         "react": "^15.4.2",
         "react-dom": "^15.4.2",
         "react-redux": "^5.0.3",
