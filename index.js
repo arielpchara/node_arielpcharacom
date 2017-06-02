@@ -49,7 +49,6 @@ app.use((req, res) => {
     </Provider>);
     const preloadedState = store.getState();
     res.send(renderFullPage(html, preloadedState))
-    // res.send(readFileSync(join(__dirname, 'index.html'), 'utf-8'));
 });
 
 app.listen(process.env.PORT, () => console.log(`Server start on ${process.env.PORT}`));
