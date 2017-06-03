@@ -4,7 +4,6 @@ import {connect} from 'react-redux';
 
 const GitHubLink = ({username, children}) => (
     <span>
-        <i className="fa fa-github"></i> &nbsp;
         <a href={ "https://github.com/" + username } target="_blank">{children}</a>
     </span>
 )
@@ -12,7 +11,6 @@ const GitHubLink = ({username, children}) => (
 
 const ContactEmailLink = ({email}) => (
        <span>
-        <span className="icon"> @ </span> &nbsp; 
         <a href={'mailto:' + email}>{email}</a>
        </span>
 );
