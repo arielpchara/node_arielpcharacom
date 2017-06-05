@@ -17,7 +17,7 @@ dotenv.config();
 const app = express();
 
 function renderFullPage(html, preloadedState) {
-    return `
+  return `
     <!doctype html>
     <html>
       <head>
@@ -50,23 +50,23 @@ const CLIENT_ID = '831e367d117c42d4ac88f8fd14aef654';
 const CLIENT_SECRET = '4f7e98a19f074fb5b73d2593cb0e03db';
 
 fetch(`https://api.instagram.com/oauth/authorize/?client_id=CLIENT_ID&redirect_uri=${REDIRECT_URI}&response_type=code`)
-  .then( response => console.log( JSON.stringify(response) ) );
+  // .then(response => console.log(JSON.stringify(response.body)));
 
 app.get('/instagram/code', (req, res) => {
-    const { code } = req.query;
-    console.log(`Instagram send code: ${code}`)
-    res.send(1);
-    fetch(`https://api.instagram.com/oauth/access_token`, {
-      methid:'POST',
-      body: {
-        client_id: CLIENT_ID,
-        client_secret: CLIENT_SECRET,
-        grant_type=authorization_code,
-        code,
-        redirect_uri: 'http://ariel.pchara.com/instagram/token'
-      }
-    })
-    .then( response => console.log( JSON.stringify(response) ) );
+  const { code } = req.query;
+  console.log(`Instagram send code: ${code}`)
+  res.send(1);
+  fetch(`https://api.instagram.com/oauth/access_token`, {
+    methid: 'POST',
+    body: {
+      client_id: CLIENT_ID,
+      client_secret: CLIENT_SECRET,
+      grant_type: 'authorization_code',
+      code,
+      redirect_uri: 'http://ariel.pchara.com/instagram/token'
+    }
+  })
+    .then(response => console.log(JSON.stringify(response)));
 });
 
 app.all('/instagram/token', (req, res) => {
@@ -76,11 +76,9 @@ app.all('/instagram/token', (req, res) => {
 app.use(express.static(join(__dirname, './dist')));
 
 app.use((req, res) => {
+  const store = createStore(reducers);
+  const html = renderToString(<Provider store={store}><HelloCenter /></Provider>);
+  const preloadedState = store.getState(); res.send(renderFullPage(html, preloadedState))
+});
 
-            const store = createStore(reducers);
-
-            const html = renderToString( <Provider store = { store }><HelloCenter/></Provider>);
-                const preloadedState = store.getState(); res.send(renderFullPage(html, preloadedState))
-            }); x
-
-        app.listen(process.env.PORT, () => console.log(`Server start on ${process.env.PORT}`));
+app.listen(process.env.PORT, () => console.log(`Server start on ${process.env.PORT}`));
