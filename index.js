@@ -9,6 +9,7 @@ import { createStore } from 'redux'
 import reducers from './src/reducers'
 import fetch from 'isomorphic-fetch'
 import redis from 'redis'
+import FormData from 'form-data'
 
 import HelloCenter from './src/components/HelloCenter';
 
@@ -55,18 +56,29 @@ fetch(`https://api.instagram.com/oauth/authorize/?client_id=CLIENT_ID&redirect_u
 app.get('/instagram/code', (req, res) => {
   const { code } = req.query;
   console.log(`Instagram send code: ${code}`)
-  res.send(200);
+  const form = new FormData();
+  form.append('client_id', CLIENT_ID);
+  form.append('client_secret', CLIENT_SECRET);
+  form.append('grant_type', 'authorization_code');
+  form.append('code', code);
+  form.append('redirect_uri', 'http://ariel.pchara.com/instagram/token');
+  const body = {
+    client_id: CLIENT_ID,
+    client_secret: CLIENT_SECRET,
+    grant_type: 'authorization_code',
+    code,
+    redirect_uri: 'http://ariel.pchara.com/instagram/token'
+  };
+  res.json(form);
   fetch(`https://api.instagram.com/oauth/access_token`, {
-    methid: 'POST',
-    body: {
-      client_id: CLIENT_ID,
-      client_secret: CLIENT_SECRET,
-      grant_type: 'authorization_code',
-      code,
-      redirect_uri: 'http://ariel.pchara.com/instagram/token'
-    }
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/x-www-form-urlencoded'
+    },
+    body: form
   })
-  .then(response => console.log(JSON.stringify(response)));
+  // .then(response => response.json())
+  .then(response => console.log(response.status, response.statusText));
 });
 
 app.all('/instagram/token', (req, res) => {
