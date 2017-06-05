@@ -55,7 +55,7 @@ fetch(`https://api.instagram.com/oauth/authorize/?client_id=CLIENT_ID&redirect_u
 app.get('/instagram/code', (req, res) => {
   const { code } = req.query;
   console.log(`Instagram send code: ${code}`)
-  res.send(1);
+  res.send(200);
   fetch(`https://api.instagram.com/oauth/access_token`, {
     methid: 'POST',
     body: {
@@ -66,7 +66,7 @@ app.get('/instagram/code', (req, res) => {
       redirect_uri: 'http://ariel.pchara.com/instagram/token'
     }
   })
-    .then(response => console.log(JSON.stringify(response)));
+  .then(response => console.log(JSON.stringify(response)));
 });
 
 app.all('/instagram/token', (req, res) => {
