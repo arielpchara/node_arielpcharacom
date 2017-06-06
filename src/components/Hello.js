@@ -20,7 +20,6 @@ const Hello = ({name, title, subtitle}) => (
             {name}
             <Title>{title}</Title>
         </h1>
-        <SubTitle>{subtitle}</SubTitle>
         <Contact/>
     </div>
 )

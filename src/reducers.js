@@ -1,7 +1,7 @@
 
 const defaultState = {
     name: "Ariel Pchara",
-    title: 'Desenvolvedor Web/Mobile Fron-End',
+    title: 'Desenvolvedor Fron-End',
     subtitle: 'Casa de ferreiro espeto de pau',
     contact: {
         email: 'ariel@pchara.com'
