@@ -24,6 +24,7 @@ const app = express();
 app.use(instagram);
 
 app.use(express.static(join(__dirname, './dist')));
+app.use('/images', express.static(join(__dirname, './images')));
 
 app.use((req, res) => {
   const store = createStore(reducers);

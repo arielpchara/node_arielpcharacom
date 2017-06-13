@@ -2,6 +2,7 @@ import React, {Component} from 'react'
 import {connect} from 'react-redux'
 
 import Contact from './Contact'
+import Icon from './Icon'
 
 
 const Title = ({children}) => (
@@ -16,6 +17,7 @@ const SubTitle = ({children}) => (
 
 const Hello = ({name, title, subtitle}) => (
     <div className='hello'>
+        <Icon />
         <h1>
             {name}
             <Title>{title}</Title>

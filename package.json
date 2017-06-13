@@ -11,7 +11,8 @@
         "sass-watch": "node-sass  -w src/index.scss app/dist/bundle.css",
         "bundle": "browserify src/index.js -o app/dist/bundle.js -v",
         "watchify": "watchify src/index.js -o app/dist/bundle.js -v",
-        "watch": "npm-run-all --parallel watchify sass-watch dev"
+        "watch": "npm-run-all --parallel watchify sass-watch dev",
+        "imagemin": "babel-node --presets es2015 imagemin.js"
     },
     "dependencies": {
         "babel-cli": "^6.24.0",
@@ -58,6 +59,9 @@
         ]
     },
     "devDependencies": {
+        "imagemin": "^5.3.1",
+        "imagemin-jpegtran": "^5.0.2",
+        "imagemin-pngquant": "^5.0.1",
         "nodemon": "^1.11.0"
     }
 }

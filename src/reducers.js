@@ -5,7 +5,8 @@ const defaultState = {
     subtitle: 'Casa de ferreiro espeto de pau',
     contact: {
         email: 'ariel@pchara.com'
-    }
+    },
+    srcIcon: 'images/icon.png'
 }
 
 const reducer = (state=defaultState, action) => {
