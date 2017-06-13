@@ -15,13 +15,16 @@ const SubTitle = ({children}) => (
     </p>
 );
 
-const Hello = ({name, title, subtitle}) => (
+const Hello = ({name, title, subtitle, resources}) => (
     <div className='hello'>
-        <Icon />
+        {/*<Icon />*/}
         <h1>
             {name}
             <Title>{title}</Title>
         </h1>
+        <p>
+            { resources.map(res=>(<span key={res}>{res}</span>)) }
+        </p>
         <Contact/>
     </div>
 )

@@ -1,7 +1,10 @@
 
 const defaultState = {
     name: "Ariel Pchara",
-    title: 'Desenvolvedor Fron-End/JavaScript/NodeJS/MongoDB',
+    title: 'Desenvolvedor Full-stack',
+    resources: [
+        'JavaScript','NodeJS','MongoDB'
+    ],
     subtitle: 'Casa de ferreiro espeto de pau',
     contact: {
         email: 'ariel@pchara.com'
